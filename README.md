@@ -1,4 +1,4 @@
-# myFlix-Client
+# meet-app
 
 # Description
 This repo will be used to build a serverless, progressive web application (PWA) with React using a
