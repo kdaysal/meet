@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+node_modules
 /.pnp
 .pnp.js
 
@@ -22,5 +23,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Project notes file - not relevant to repo
+# environment variables
+config.json
+
+# project notes file - for my personal notes
 change-log.txt
