@@ -52,7 +52,7 @@ module.exports.getAuthURL = async () => {
     access_type: "offline",
     scope: SCOPES
   });
-
+  console.log('getAuthURL() running...');
   return {
     statusCode: 200,
     headers: {
