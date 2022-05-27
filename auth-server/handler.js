@@ -52,7 +52,6 @@ module.exports.getAuthURL = async () => {
     access_type: "offline",
     scope: SCOPES
   });
-  console.log('getAuthURL() running...');
   return {
     statusCode: 200,
     headers: {
@@ -86,13 +85,11 @@ module.exports.getAccessToken = async (event) => {
       if (err) {
         return reject(err);
       }
-      console.log('token recieved - resolving...');
       return resolve(token);
     });
   })
     .then((token) => {
       // Respond with OAuth token 
-      console.log('getToken() - .then statement reached...')
       return {
         statusCode: 200,
         headers: {
@@ -106,6 +103,9 @@ module.exports.getAccessToken = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        },
         body: JSON.stringify(err),
       };
     });
