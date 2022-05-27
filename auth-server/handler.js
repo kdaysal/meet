@@ -39,7 +39,7 @@ const oAuth2Client = new google.auth.OAuth2(
  *
  */
 
-//this function will create and send a new GOOGLE_OAUTH_URL for each user that accesses my app
+//this serverless function will create and send a new GOOGLE_OAUTH_URL for each user that accesses my app
 module.exports.getAuthURL = async () => {
   /**
    *
@@ -62,4 +62,46 @@ module.exports.getAuthURL = async () => {
       authUrl: authUrl,
     }),
   };
+};
+
+//getAccessToken serverless function
+//For each request, this function will create a new OAuthClient and return a promise which, if successful, will return the access token to my users
+module.exports.getAccessToken = async (event) => {
+  // The values used to instantiate the OAuthClient are at the top of the file
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+  // Decode authorization code extracted from the URL query
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
+
+  return new Promise((resolve, reject) => {
+    /**
+     *  Exchange authorization code for access token with a “callback” after the exchange,
+     *  The callback in this case is an arrow function with the results as parameters: “err” and “token.”
+     */
+
+    oAuth2Client.getToken(code, (err, token) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(token);
+    });
+  })
+    .then((token) => {
+      // Respond with OAuth token 
+      return {
+        statusCode: 200,
+        body: JSON.stringify(token),
+      };
+    })
+    .catch((err) => {
+      // Handle error
+      console.error(err);
+      return {
+        statusCode: 500,
+        body: JSON.stringify(err),
+      };
+    });
 };
