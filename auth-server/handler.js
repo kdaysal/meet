@@ -86,11 +86,13 @@ module.exports.getAccessToken = async (event) => {
       if (err) {
         return reject(err);
       }
+      console.log('token recieved - resolving...');
       return resolve(token);
     });
   })
     .then((token) => {
       // Respond with OAuth token 
+      console.log('getToken() - .then statement reached...')
       return {
         statusCode: 200,
         headers: {
