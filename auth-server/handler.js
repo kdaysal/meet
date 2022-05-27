@@ -50,17 +50,17 @@ module.exports.getAuthURL = async () => {
    */
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
-    scope: SCOPES,
+    scope: SCOPES
   });
 
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*"
     },
     body: JSON.stringify({
-      authUrl: authUrl,
-    }),
+      authUrl: authUrl
+    })
   };
 };
 
