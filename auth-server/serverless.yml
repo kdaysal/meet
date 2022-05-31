@@ -12,13 +12,6 @@
 # Happy Coding!
 
 service: auth-server
-# app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
-
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
-#frameworkVersion: '3'
 
 provider:
   name: aws
@@ -44,6 +37,12 @@ functions:
       - http:
           path: api/token/{code}
           method: get
+  getCalendarEvents:
+    handler: handler.getCalendarEvents
+    events:
+      - http:
+          path: api/get-events/{access-token}
+          method: get        
 
 # you can overwrite defaults here
 #  stage: dev
