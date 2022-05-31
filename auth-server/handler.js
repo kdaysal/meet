@@ -122,7 +122,7 @@ module.exports.getCalendarEvents = event => {
     redirect_uris[0]
   );
   // Decode authorization code extracted from the URL query
-  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+  const access_token = decodeURIComponent(`${event.pathParameters['access-token']}`);
   oAuth2Client.setCredentials({ access_token });
 
   return new Promise((resolve, reject) => {
@@ -150,7 +150,8 @@ module.exports.getCalendarEvents = event => {
       return {
         statusCode: 200,
         headers: {
-          "Access-Control-Allow-Origin": "*"
+          "Access-Control-Allow-Credentials": true,
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify({ events: results.data.items })
       };
@@ -161,6 +162,7 @@ module.exports.getCalendarEvents = event => {
       return {
         statusCode: 500,
         headers: {
+          "Access-Control-Allow-Credentials": true,
           'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(err),
