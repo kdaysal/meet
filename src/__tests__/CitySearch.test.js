@@ -12,7 +12,6 @@ describe('<CitySearch /> component', () => {
 
   //This test checks whether an element with the class name 'city' exists within the CitySearchWrapper component
   test('render text input', () => {
-    const CitySearchWrapper = shallow(<CitySearch />);
     expect(CitySearchWrapper.find('.city')).toHaveLength(1);
   });
 
