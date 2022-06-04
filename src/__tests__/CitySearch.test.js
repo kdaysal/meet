@@ -14,4 +14,12 @@ describe('<CitySearch /> component', () => {
     expect(CitySearchWrapper.find('.suggestions')).toHaveLength(1);
   });
 
+  test('renders text input correctly', () => {
+    const CitySearchWrapper = shallow(<CitySearch />);
+
+    //create a new variable 'query' and assign it to the value that the user types into the textbox
+    const query = CitySearchWrapper.state('query');
+    expect(CitySearchWrapper.find('.city').prop('value')).toBe(query);
+  });
+
 });//end describe
