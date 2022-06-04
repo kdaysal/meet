@@ -11,10 +11,19 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find(".event")).toHaveLength(1);
   });
 
-
   test('render the summary of the event', () => {
     const EventWrapper = shallow(<Event event={mockData[0]} />);
     expect(EventWrapper.find(".summary")).toHaveLength(1);
+  })
+
+  test('render the start date and time zone for the event', () => {
+    const EventWrapper = shallow(<Event event={mockData[0]} />);
+    expect(EventWrapper.find(".start-date-time")).toHaveLength(1);
+  })
+
+  test('render the location for the event', () => {
+    const EventWrapper = shallow(<Event event={mockData[0]} />);
+    expect(EventWrapper.find(".location")).toHaveLength(1);
   })
 
 });
