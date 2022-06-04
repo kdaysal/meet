@@ -5,9 +5,16 @@ import { mockData } from '../mock-data';
 
 describe('<Event /> component', () => {
 
+  //most basic of all the tests - check if a single event is rendered
   test('render a single event (1st element of mockData)', () => {
     const EventWrapper = shallow(<Event event={mockData[0]} />);
     expect(EventWrapper.find(".event")).toHaveLength(1);
   });
+
+
+  test('render the summary of the event', () => {
+    const EventWrapper = shallow(<Event event={mockData[0]} />);
+    expect(EventWrapper.find(".summary")).toHaveLength(1);
+  })
 
 });

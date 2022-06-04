@@ -4,9 +4,12 @@ class Event extends Component {
   render() {
     const { event } = this.props;
 
-    return <div className="event">
+    return (
+      <div className="event">
+        <h2 className="summary">{event.summary}</h2>
 
-    </div>;
+      </div> //end "event" <div>
+    )
   }
 }
 export default Event;
