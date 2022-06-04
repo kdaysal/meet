@@ -26,4 +26,10 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find(".location")).toHaveLength(1);
   })
 
+  //just test whether the more-details-button actually renders
+  test("render the show details button", () => {
+    const EventWrapper = shallow(<Event event={mockData[0]} />);
+    expect(EventWrapper.find(".more-details-button")).toHaveLength(1);
+  });
+
 });
