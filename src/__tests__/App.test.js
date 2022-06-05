@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
+import NumberOfEvents from '../NumberOfEvents';
 
 //'<App /> component' is a new 'scope'
 //renders the 'App' component using the shallow rendering API
@@ -19,6 +20,10 @@ describe('<App /> component', () => {
   //similarly, this test ensures that the required component, CitySearch, exists
   test('render CitySearch', () => {
     expect(AppWrapper.find(CitySearch)).toHaveLength(1);
+  });
+
+  test('render the number of events', () => {
+    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
   });
 
 });//end describe
