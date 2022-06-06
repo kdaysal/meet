@@ -5,11 +5,18 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 
 class App extends Component {
+
+  //initialize states to empty/default
+  state = {
+    events: [],
+    locations: []
+  }
+
   render() {
     return (
       <div className="App">
-        <CitySearch />
-        <EventList />
+        <CitySearch locations={this.state.locations} />
+        <EventList events={this.state.events} />
         <NumberOfEvents />
       </div>
     );
