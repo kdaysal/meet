@@ -19,21 +19,33 @@ class Event extends Component {
     const { collapsed } = this.state;
 
     return (
-      <div className="event">
-        <h2 className="summary">{event.summary}</h2>
-        <p className="start-date-time">{event.start.dateTime} in time zone: {event.start.timeZone}</p>
-        <p className="location">Happening in: {event.location}</p>
+      <div className="event-wrapper">
+        <div className="event">
+          <h2 className="summary">{event.summary}</h2>
+          <p className="start-date-time">Starts: {event.start.dateTime} ({event.start.timeZone}) </p>
+          <p className="end-date-time">Ends: {event.end.dateTime}</p>
+          <p className="location">Happening in: {event.location}</p>
 
-        {/* Add a button with an additional className that is conditionally generated based on the state of 'collapsed' */}
-        <button
-          variant="outline-info"
-          className={`more-details-button ${collapsed ? "show" : "hide"}-details`}
-          onClick={this.handleClick}
-        >
-          {collapsed ? "Show Details" : "Hide Details"}
-        </button>
+          {/* Add a button with an additional className that is conditionally generated based on the state of 'collapsed' */}
+          <button
+            variant="outline-info"
+            className={`more-details-button ${collapsed ? "show" : "hide"}-details`}
+            onClick={this.handleClick}
+          >
+            {collapsed ? "Show Details" : "Hide Details"}
+          </button>
 
-      </div> //end "event" <div>
+          {!collapsed && (
+            <div className="show-more-details">
+              <h4>Event details:</h4>
+              <p className="event-organizer">Organized by: {event.organizer.email}</p>
+              <br></br>
+              <p className="event-description">{event.description}</p>
+            </div>
+          )}
+
+        </div>
+      </div>
     )
   }
 }
