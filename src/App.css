@@ -78,6 +78,10 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
+.event-wrapper {
+  background-color: lightgoldenrodyellow;
+}
+
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
@@ -85,6 +89,10 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+}
+
+.event-description {
+  font-style: italic;
 }
 
 .more-details-button {
