@@ -50,6 +50,14 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
+  test('App passes "numberOfEvents" state as a prop to NumberOfEvents', () => {
+    const AppWrapper = mount(<App />);
+    const AppNumberOfEvents = AppWrapper.state('numberOfEvents');
+    expect(AppNumberOfEvents).not.toEqual(undefined);
+    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(AppNumberOfEvents);
+    AppWrapper.unmount();
+  });
+
   test('get list of events matching the city selected by the user', async () => {
     const AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
