@@ -11,8 +11,11 @@ class App extends Component {
   //initialize states to empty/default
   state = {
     events: [],
-    locations: []
+    locations: [],
+    numberOfEvents: 32,
   }
+
+
 
   //using this.mounted boolean to update the state only if the component is mounted
   componentDidMount() {
@@ -28,14 +31,18 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateEvents = (location) => {
+  //note - I'm also setting default values for the location and eventCount parameters
+  updateEvents = (location = 'all', eventCount = '32') => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
         events.filter((event) => event.location === location);
-      this.setState({
-        events: locationEvents
-      });
+      if (this.mounted) {
+        this.setState({
+          events: locationEvents.slice(0, this.state.numberOfEvents),
+          numberOfEvents: eventCount
+        });
+      }
     });
   }
 
@@ -48,7 +55,10 @@ class App extends Component {
         />
         <br></br>
         <br></br>
-        <NumberOfEvents />
+        <NumberOfEvents
+          numberOfEvents={this.state.numberOfEvents}
+          updateEvents={this.updateEvents}
+        />
         <EventList events={this.state.events} />
 
       </div>
