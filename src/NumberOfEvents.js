@@ -19,13 +19,15 @@ class NumberOfEvents extends Component {
       })
     } else {
       this.setState({
-        numberOfEvents: userInput
+        numberOfEvents: userInput,
+        message: ''
       });
     }
-    //this.props.updateNumberOfEvents(e.target.value); - may be needed later to update props on App.js
+    this.props.updateEvents(undefined, userInput);
   };
 
   render() {
+    // const { events, NumberOfEvents, updateEvents } = this.props;
     return (
       <div className="number-events-wrapper"> Number of Events
         <input
