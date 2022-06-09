@@ -11,8 +11,9 @@ class NumberOfEvents extends Component {
 
   //if input is changed, update state of numberOfEvents if input is within valid range
   handleInputChanged = (e) => {
-    const userInput = e.target.value;
+    let userInput = e.target.value;
     if (userInput < 1 || userInput > 32) {
+      userInput = 32;
       this.setState({
         numberOfEvents: '32',
         message: 'Out of range - please enter a number between 1 and 32'
