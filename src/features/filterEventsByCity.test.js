@@ -1,4 +1,8 @@
 import { loadFeature, defineFeature } from 'jest-cucumber'; //loadFeature() is used to load a Gherkin file; defineFeature() is used to define the code for that file (feature)
+import React from 'react';
+import { mount } from 'enzyme';
+import App from '../App';
+import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');//note - loadFeature() expects the file path to start from the root of the project folder
 
@@ -9,12 +13,14 @@ defineFeature(feature, test => {
 
     });
 
+    let AppWrapper;
     when('the user opens the app', () => {
-
+      AppWrapper = mount(<App />);
     });
 
     then('the user should see the list of upcoming events.', () => {
-
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
   });
 
