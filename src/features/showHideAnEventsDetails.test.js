@@ -11,18 +11,21 @@ const locations = extractLocations(mockData);
 
 defineFeature(feature, test => {
 
+  let AppWrapper; //declare AppWrapper within defineFeature() and before the first test
   //Scenario 1
   test('An event element is collapsed by default.', ({ given, when, then }) => {
-    given('the user is on the main page', () => {
 
+    given('the user is on the main page', () => {
+      //simply mount the App component to meet this criteria
+      AppWrapper = mount(<App />);
     });
 
     when('the user has not clicked on an event element', () => {
-
+      //intentionally blank
     });
 
     then('the event element is collapsed by default', () => {
-
+      expect(AppWrapper.find('.show-more-details')).toHaveLength(0);
     });
   });
 
