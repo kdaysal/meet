@@ -6,13 +6,25 @@ describe('show/hide an event details', () => {
 
   let browser;
   let page;
+  jest.setTimeout(60000);
   beforeAll(async () => {
-    jest.setTimeout(30000);
+
     browser = await puppeteer.launch();
+
+    //To turn headless mode off and visually see the testing suites in action (but much slower!), comment-out the 'browser' assignment line above and uncomment the one below
+    /* ************************************ */
+    // browser = await puppeteer.launch({
+    //   headless: false,
+    //   slowMo: 250, // slow down by 250ms
+    //   ignoreDefaultArgs: ['--disable-extensions'] // ignores default setting that causes timeout errors
+    // });
+    /* ************************************ */
+
     page = await browser.newPage();
     await page.goto('http://localhost:3000/');
     await page.waitForSelector('.event'); //waitForSelector is an API method that will wait for the Event component to be loaded first
   });
+  /* *********************************************************************** */
 
   //Scenario 1
   test('An event element is collapsed by default', async () => {
