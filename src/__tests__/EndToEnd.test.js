@@ -27,6 +27,13 @@ describe('show/hide an event details', () => {
     expect(eventDetails).toBeDefined();// check if the .show-more-details className exists (i.e. that more details are indeed showing)
   });
 
+  //Scenario 3 - at this point in the test suite, the '.show-more-details' button will have been pressed once (i.e. more details are currently showing)
+  test('User can collapse an event to hide its details', async () => {
+    await page.click('.event .more-details-button');
+    const eventDetails = await page.$('.event .show-more-details');
+    expect(eventDetails).toBeNull();
+  });
+
   afterAll(() => {
     browser.close();
   });
