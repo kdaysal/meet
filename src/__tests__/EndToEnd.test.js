@@ -22,6 +22,7 @@ describe('show/hide an event details', () => {
 
   //Scenario 2
   test('User can expand an event to see its details', async () => {
+    await page.click('.event .more-details-button');
     const eventDetails = await page.$('.event .show-more-details');
     expect(eventDetails).toBeDefined();// check if the .show-more-details className exists (i.e. that more details are indeed showing)
   });
