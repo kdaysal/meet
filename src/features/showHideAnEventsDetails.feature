@@ -6,7 +6,7 @@ Feature: Show / Hide an Event's Details
     Then the event element is collapsed by default
 
   Scenario: User can expand an event to see its details
-    Given the user is on the main page
+    Given 1 or more events is displayed on the page
     When the user clicks the Show Details button
     Then the event element expands to reveal more details
 
