@@ -1,13 +1,17 @@
 import { loadFeature, defineFeature } from 'jest-cucumber'; //loadFeature() is used to load a Gherkin file; defineFeature() is used to define the code for that file (feature)
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from '../App';
 import { mockData } from '../mock-data';
+import CitySearch from '../CitySearch';
+import { extractLocations } from '../api';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');//note - loadFeature() expects the file path to start from the root of the project folder
+const locations = extractLocations(mockData);
 
 defineFeature(feature, test => {
 
+  //Scenario 1
   test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
     given('user hasn’t searched for any city', () => {
 
@@ -24,20 +28,23 @@ defineFeature(feature, test => {
     });
   });
 
+  //Scenario 2
   test('User should see a list of suggestions when they search for a city', ({ given, when, then }) => {
+    let CitySearchWrapper;
     given('the main page is open', () => {
-
+      CitySearchWrapper = shallow(<CitySearch updateEvents={() => { }} locations={locations} />);
     });
 
     when('the user starts typing in the city textbox', () => {
-
+      CitySearchWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
     });
 
     then('the user should receive a list of cities (suggestions) that match what they’ve typed', () => {
-
+      expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(2);
     });
   });
 
+  //Scenario 3
   test('User can select a city from the suggested list', ({ given, and, when, then }) => {
     given('user was typing “Berlin” in the city textbox', () => {
 
