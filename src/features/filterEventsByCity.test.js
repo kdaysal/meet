@@ -71,4 +71,4 @@ defineFeature(feature, test => {
     });
   });
 
-});//end describe
+});//end defineFeature
