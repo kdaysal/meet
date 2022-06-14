@@ -25,6 +25,7 @@ class App extends Component {
         this.setState({ events, locations: extractLocations(events) });
       }
     });
+    this.updateEvents('all', 32);//testing to see if this limits the initial loading of 'all' events from the API to only 32
   }
 
   componentWillUnmount() {
