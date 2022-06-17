@@ -21,6 +21,7 @@ class CitySearch extends Component {
       this.setState({
         query: value,
         infoText: 'We cannot find the city you are looking for. Please try another city',
+        showSuggestions: false
       });
     } else {
       this.setState({
@@ -51,6 +52,7 @@ class CitySearch extends Component {
           onChange={this.handleInputChanged}
           placeholder="Search for a city"
           onFocus={() => { this.setState({ showSuggestions: true }) }}
+        //onBlur={() => { this.setState({ showSuggestions: false }) }} //this hides the suggestion list, but causes clicking on a suggestion to no longer filter the list. -leaving here as a reminder to fix later - TBD
         />
 
         <ul className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' }}>
