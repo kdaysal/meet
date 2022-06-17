@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+import { InfoAlert, ErrorAlert, WarningAlert } from './Alert';
 
 class App extends Component {
 
@@ -50,6 +51,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* <WarningAlert text={'No internet connection detected, unable to load live data.'} /> */}
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
