@@ -27,7 +27,18 @@ class App extends Component {
       }
     });
     this.updateEvents('all', 32);//testing to see if this limits the initial loading of 'all' events from the API to only 32
-  }
+
+    //create and set state of 'warningAlertText' based on whether user is offline or online
+    if (!navigator.onLine) {
+      this.setState({
+        warningAlertText: 'Warning: No internet connection detected! Loading list from cache.'
+      });
+    } else {
+      this.setState({
+        warningAlertText: ''
+      });
+    }
+  }//end componentDidMount
 
   componentWillUnmount() {
     this.mounted = false;
@@ -49,9 +60,11 @@ class App extends Component {
   }
 
   render() {
+
+    const { warningAlertText } = this.state;
+
     return (
       <div className="App">
-        {/* <WarningAlert text={'No internet connection detected, unable to load live data.'} /> */}
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
@@ -62,8 +75,8 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateEvents={this.updateEvents}
         />
+        <WarningAlert text={warningAlertText} />
         <EventList events={this.state.events} />
-
       </div>
     );
   }
