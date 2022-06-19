@@ -34,6 +34,13 @@ export const getEvents = async () => {
     return mockData;
   }
 
+  //check if user is online; if not online, load data from the stored event list instead of the google calendar api
+  if (!navigator.onLine) {
+    const data = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return data ? JSON.parse(data).events : [];;
+  }
+
   const token = await getAccessToken();
 
   if (token) {
