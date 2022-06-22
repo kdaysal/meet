@@ -57,6 +57,17 @@ class App extends Component {
     this.mounted = false;
   }
 
+  //return an array consisting of just the city name and number of events in that city
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return { city, number };
+    })
+    return data;
+  };
+
   //note - I'm also setting default values for the location and eventCount parameters
   updateEvents = (location = 'all', eventCount = '32') => {
     getEvents().then((events) => {
