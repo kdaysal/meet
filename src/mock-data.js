@@ -19,16 +19,16 @@ const mockData = [
       "self": true
     },
     "start": {
-      "dateTime": "2020-06-30T09:00:00+02:00",
+      "dateTime": "2022-06-30T09:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "end": {
-      "dateTime": "2020-06-30T10:00:00+02:00",
+      "dateTime": "2022-06-30T10:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "recurringEventId": "48m09le389vijbqfs2mcr6i87q",
     "originalStartTime": {
-      "dateTime": "2020-06-30T09:00:00+02:00",
+      "dateTime": "2022-06-30T09:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "iCalUID": "48m09le389vijbqfs2mcr6i87q@google.com",
@@ -88,16 +88,16 @@ const mockData = [
       "self": true
     },
     "start": {
-      "dateTime": "2020-06-30T14:00:00+02:00",
+      "dateTime": "2022-06-30T14:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "end": {
-      "dateTime": "2020-06-30T15:00:00+02:00",
+      "dateTime": "2022-06-30T15:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "recurringEventId": "20c51je3q99mnolr1rp06dt9jd",
     "originalStartTime": {
-      "dateTime": "2020-06-30T14:00:00+02:00",
+      "dateTime": "2022-06-30T14:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "iCalUID": "20c51je3q99mnolr1rp06dt9jd@google.com",
@@ -157,16 +157,16 @@ const mockData = [
       "self": true
     },
     "start": {
-      "dateTime": "2020-05-20T14:00:00+02:00",
+      "dateTime": "2022-05-20T14:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "end": {
-      "dateTime": "2020-05-20T15:00:00+02:00",
+      "dateTime": "2022-05-20T15:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
     "originalStartTime": {
-      "dateTime": "2020-05-20T14:00:00+02:00",
+      "dateTime": "2022-05-20T14:00:00+02:00",
       "timeZone": "Europe/Berlin"
     },
     "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
