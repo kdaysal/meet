@@ -91,6 +91,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>Welcome to Meet App!</h1>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
@@ -103,8 +104,10 @@ class App extends Component {
         />
         <WarningAlert text={warningAlertText} />
         <EventList events={this.state.events} />
+        { /*
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
+    */}
       </div>
     );
   }
