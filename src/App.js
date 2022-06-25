@@ -8,7 +8,7 @@ import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { InfoAlert, ErrorAlert, WarningAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
 import {
-  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
 
@@ -89,10 +89,10 @@ class App extends Component {
   }
 
   render() {
-    const { locations, numberOfEvents, warningAlertText } = this.state;
+    const { locations, numberOfEvents, events, warningAlertText } = this.state;
     return (
       <div className="App">
-        <h1>Meet App</h1>
+        <h1>Welcome to Meet App!</h1>
         <h4>Choose your nearest city</h4>
         <CitySearch updateEvents={this.updateEvents} locations={locations} />
         <NumberOfEvents
@@ -101,20 +101,20 @@ class App extends Component {
         />
         <h4>Events in each city</h4>
         <WarningAlert text={warningAlertText} />
-        <ScatterChart
-          width={800}
-          height={400}
-          margin={{
-            top: 20, right: 20, bottom: 20, left: 20,
-          }}
-        >
-          <CartesianGrid />
-          <XAxis type="category" dataKey="city" name="city" />
-          <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-          <Scatter data={this.getData()} fill="#8884d8" />
-        </ScatterChart>
-        <EventList events={this.state.events} />
+        <ResponsiveContainer height={400} >
+          <ScatterChart
+            margin={{
+              top: 20, right: 20, bottom: 20, left: 20,
+            }}
+          >
+            <CartesianGrid />
+            <XAxis type="category" dataKey="city" name="city" />
+            <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <Scatter data={this.getData()} fill="#8884d8" />
+          </ScatterChart>
+        </ResponsiveContainer>
+        <EventList events={events} />
         { /*
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
