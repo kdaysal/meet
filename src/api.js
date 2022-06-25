@@ -27,6 +27,7 @@ export const checkToken = async (accessToken) => {
 
 //if I'm using localhost, then return mock data; otherwise, return the real API data
 export const getEvents = async () => {
+  console.log(`getEvents called`);
   NProgress.start();
 
   if (window.location.href.startsWith("http://localhost")) {
