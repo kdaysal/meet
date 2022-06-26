@@ -36,6 +36,7 @@ class NumberOfEvents extends Component {
           value={this.state.numberOfEvents}
           onChange={this.handleInputChanged}
           onFocus={e => e.target.select()}
+          onClick={e => e.target.select()}
           ref={inputEl => (this.searchInput = inputEl)}
         />
         <ErrorAlert text={this.state.errorMessage} />
