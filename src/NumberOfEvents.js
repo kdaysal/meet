@@ -37,7 +37,7 @@ class NumberOfEvents extends Component {
           className="number-events-input"
           value={this.state.numberOfEvents}
           onChange={this.handleInputChanged}
-          onfocus="this.select()"
+          onFocus={e => e.target.select()}
         />
         <ErrorAlert text={this.state.errorMessage} />
       </div>
