@@ -14,9 +14,7 @@ class NumberOfEvents extends Component {
   handleInputChanged = (e) => {
     let userInput = e.target.value;
     if (userInput < 1 || userInput > 32) {
-      userInput = 32; //reset userInput to the default '32'
       this.setState({
-        numberOfEvents: '32', //reset state to the default '32'
         errorMessage: 'Out of range - please enter a number between 1 and 32'
       })
     } else {
@@ -24,8 +22,8 @@ class NumberOfEvents extends Component {
         numberOfEvents: userInput,
         errorMessage: ''
       });
+      this.props.updateEvents(undefined, userInput);
     }
-    this.props.updateEvents(undefined, userInput);
   };
 
   render() {
@@ -38,6 +36,7 @@ class NumberOfEvents extends Component {
           value={this.state.numberOfEvents}
           onChange={this.handleInputChanged}
           onFocus={e => e.target.select()}
+          ref={inputEl => (this.searchInput = inputEl)}
         />
         <ErrorAlert text={this.state.errorMessage} />
       </div>
