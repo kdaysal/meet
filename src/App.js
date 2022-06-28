@@ -119,10 +119,8 @@ class App extends Component {
           </ResponsiveContainer>
         </div>
         <EventList events={events} />
-        { /*
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
-    */}
       </div>
     );
   }
