@@ -95,7 +95,7 @@ class App extends Component {
       <div className="App">
         <h1>Welcome to Meet App!</h1>
         <h4>Choose your nearest city</h4>
-        <CitySearch updateEvents={this.updateEvents} locations={locations} />
+        <CitySearch updateEvents={this.updateEvents} locations={locations} numberOfEvents={numberOfEvents} />
         <NumberOfEvents
           updateEvents={this.updateEvents}
           numberOfEvents={numberOfEvents}
