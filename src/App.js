@@ -21,7 +21,8 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    showWelcomeScreen: undefined //'true' = show the welcome screen; 'false' = hide the welcome screen to show other components; undefined will be used to to render an empty div until the state gets updated to 'true' or 'false'
+    showWelcomeScreen: undefined, //'true' = show the welcome screen; 'false' = hide the welcome screen to show other components; undefined will be used to to render an empty div until the state gets updated to 'true' or 'false'
+    suggestion: 'all'
   }
 
 
@@ -74,7 +75,7 @@ class App extends Component {
   };
 
   //note - I'm also setting default values for the location and eventCount parameters
-  updateEvents = (location = 'all', eventCount = '32') => {
+  updateEvents = (location = this.state.suggestion, eventCount = '32') => {
     console.log(`updateEvents called`);
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
@@ -89,16 +90,28 @@ class App extends Component {
     });
   }
 
+  updateSuggestion = (suggestion) => {
+    this.setState({
+      suggestion: suggestion
+    })
+  }
+
   render() {
     const { locations, numberOfEvents, events, warningAlertText } = this.state;
     return (
       <div className="App">
         <h1>Welcome to Meet App!</h1>
         <h4>Choose your nearest city</h4>
-        <CitySearch updateEvents={this.updateEvents} locations={locations} numberOfEvents={numberOfEvents} />
+        <CitySearch
+          updateEvents={this.updateEvents}
+          locations={locations}
+          numberOfEvents={numberOfEvents}
+          updateSuggestion={this.updateSuggestion}
+        />
         <NumberOfEvents
           updateEvents={this.updateEvents}
           numberOfEvents={numberOfEvents}
+          updateSuggestion={this.updateSuggestion}
         />
         <h4>Events in each city</h4>
         <WarningAlert text={warningAlertText} />
