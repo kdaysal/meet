@@ -96,15 +96,6 @@ class App extends Component {
     })
   }
 
-  //allow direct access for mentor email :) -DELETE LATER-
-  updateWelcomeScreen = (e) => {
-    if (e === "yumym4u@gmail.com") {
-      this.setState({
-        showWelcomeScreen: false
-      })
-    }
-  }
-
   render() {
     const { locations, numberOfEvents, events, warningAlertText } = this.state;
     return (
@@ -141,11 +132,8 @@ class App extends Component {
           </ResponsiveContainer>
         </div>
         <EventList events={events} />
-        <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => { getAccessToken() }}
-          updateWelcomeScreen={this.updateWelcomeScreen}
-        />
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
