@@ -1,6 +1,7 @@
 import React from "react";
 import './WelcomeScreen.css';
 function WelcomeScreen(props) {
+
   return props.showWelcomeScreen ?
     (
       <div className="WelcomeScreen">
@@ -33,6 +34,14 @@ function WelcomeScreen(props) {
         >
           Privacy policy
         </a>
+        <br></br>
+        <br></br>
+        <input
+          type="text"
+          className="mentor-email"
+          onChange={e => props.updateWelcomeScreen(e.target.value)}
+          placeholder="Login with mentor email"
+        />
       </div>
     )
     : null
