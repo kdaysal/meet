@@ -41,7 +41,6 @@ function WelcomeScreen(props) {
           className="mentor-email"
           onChange={e => props.updateWelcomeScreen(e.target.value)}
           placeholder="Login with mentor email"
-          autoFocus
         />
       </div>
     )
