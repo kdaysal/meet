@@ -22,10 +22,33 @@ const EventGenre = ({ events }) => {
   useEffect(() => {
 
     const getData = () => {
-      const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular', 'AngularJS'];
+      const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'jQuery,', 'AngularJS', 'Angular', 'AngularJS-Remote'];
+      const scrubbedGenres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS']
 
-      const data = genres.map((genre) => {
-        const value = events.filter((event) => event.summary.split(' ').includes(genre)).length;
+      let testArray1 = [...events.map((event) => event.summary.split(' '))]
+      let scrubbedArray = [];
+      //  console.log(`testArray1: ${testArray1}`);
+
+      //  console.log(`testArray1[0] is: ${testArray1[0]}`);
+      //  console.log(`testArray1[1] is: ${testArray1[1]}`);
+
+      for (let i = 0; i < testArray1.length; i++) {
+        if ((testArray1[i].includes('AngularJS')) || (testArray1[i].includes('AngularJS-Remote'))) {
+          scrubbedArray.push('AngularJS');
+        }
+        else if (testArray1[i].includes('jQuery,')) {
+          scrubbedArray.push('jQuery');
+        }
+        else {
+          scrubbedArray.push(testArray1[i])
+        }
+      }
+
+      //console.log(`scrubbedArray: ${scrubbedArray}`);
+
+      const data = scrubbedGenres.map((genre) => {
+        const value = scrubbedArray.filter((event) => event.includes(genre)).length;
+        // console.log(`name: ${genre}, value: ${value}`);
         return { name: genre, value };
       });
       return data;
