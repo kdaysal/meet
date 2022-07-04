@@ -23,7 +23,7 @@ const EventGenre = ({ events }) => {
 
     const getData = () => {
       const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'jQuery,', 'AngularJS', 'Angular', 'AngularJS-Remote'];
-      const scrubbedGenres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS']
+      const scrubbedGenres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular']
 
       let testArray1 = [...events.map((event) => event.summary.split(' '))]
       let scrubbedArray = [];
@@ -34,7 +34,7 @@ const EventGenre = ({ events }) => {
 
       for (let i = 0; i < testArray1.length; i++) {
         if ((testArray1[i].includes('AngularJS')) || (testArray1[i].includes('AngularJS-Remote'))) {
-          scrubbedArray.push('AngularJS');
+          scrubbedArray.push('Angular');
         }
         else if (testArray1[i].includes('jQuery,')) {
           scrubbedArray.push('jQuery');
