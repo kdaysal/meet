@@ -46,17 +46,22 @@
 
 * As a user, I would like to be able to see a chart showing the upcoming events in each city so that I know what events are organized in which city.
 
-## Technologies used in this build
+## Technologies / strategies used in this build
 
 * React
 * JavaScript
 * Node.js
-* Jest (unit testing)
+* [Jest](https://jestjs.io/) (for unit testing)
+* [Enzyme](https://enzymejs.github.io/enzyme/docs/api/shallow.html) (for testing / shallow rendering)
 * Cucumber (integration testing)
-* Puppeteer (end-to-end testing)
+* [Puppeteer](https://github.com/puppeteer/puppeteer/blob/v1.15.0/docs/api.md) (end-to-end testing)
+* TDD approach for testing
+* BDD's Gherkin syntax (for breaking down user stories for testing)
 * HTML, CSS
-* Google Calendar API in conjunction with OAuth2
-* AWS Lambda (serverless functions, authentication-test-server
+* Google Calendar API
+* [OAuth2](https://developers.google.com/identity/protocols/oauth2) Authentication
+* AWS Lambda ([serverless framework](https://www.serverless.com/framework/docs/), setting up an authentication-test-server)
+* [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) - used to analyze the app and rate it against PWA criteria
 
 ## Technical Requirements
 
